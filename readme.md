@@ -1,3 +1,3 @@
 # Repository Description
 
-this is a A repository to save next-js projects
+This is a repository to save next-js projects for practising purpose.
