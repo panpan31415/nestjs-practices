@@ -1,0 +1,74 @@
+1. understanding the app folder.
+
+    1.1 app folder is the place where you setup all your pages of the website. 
+
+2. React Server Components
+
+    2.1 the file name "page" and "layout" are reserved file name. "page.js" tells next.js that it should render a page. 
+
+    2.2 the Home component inside page.js is not only a React Component, but also a Server Component, which means this component is rendered on the server side.
+
+    2.3 when you call console.log function in page component, you will not get logs in browser. Instead you will see the logs in the server.
+
+    2.4 so these components are React Components but treated in a special way by NextJS, and those components are executed on the server and sent over the wire to the browser as HTML. 
+
+3. File based routing
+
+    3.1 if we add /about folder inside /app folder, it  won't do anything, because NextJS doesn't know anything about this folder yet. But if you add a page.js inside /about folder, the content of page.js will be rendered. So by adding a page.js file to a folder, we can create a route.
+
+4. Navigate Between Pages
+
+    4.1 we can simply add an <a> into our page, but this will tiger browser re-rendering. Even though NextJS renders a website on the server site, but once the website is loaded in browser, NextJS allow the website to stay in a single-page application. To get this benefit, we should use "Link" component provided by NextJs.  
+
+5. Pages and Layouts
+
+    5.1 layout.js is also a reserved file name in NextJS. page.js defines the content of the page, and layout.js defines the "shell" or "container" of the page.
+
+    5.2 In a NextJS project, it needs at least one root layout JS file. We could also add one in side the sub folder, but the one inside the sub folder will only apply in that folder (including nested folders). 
+
+    5.3 In the root layout.js, that is inside top level of app folder, it defined a RootLayout react component, where it uses standard React to build up a webpage HTML skeleton. 
+
+    5.4 The "metadata" defined above the RootLayout component will be injected as head element to the HTML skeleton. So the variable "metadata" is also a reserved name in NextJS.
+
+6. Reserved file names
+
+    6.1 icon.png defines the favicon of webpage. 
+
+    6.2 you can import a global.css file to root layout so all the other pages will use the css you defined in global.css. 
+
+    6.3 You can also create ordinary React Component any where inside the project, and import the component to the page you want to use, it is the same as ordinary React development.
+
+    6.4 you can also create a component folder to save all the custom React components, you will not be able to visit the component from the browser as long as there is no page.js inside the component folder. 
+
+    6.5 when you import a file you can use "@" to refer the root, for example you can write
+    import Header from "@/components/header". 
+    with the file structure:
+    |--/app
+    |--/app/about/
+    |--/app/about/page.js
+    |--/app/page.js
+    |--/app/layout.js
+    |--/app/icon.png
+    |--/app/globals.css
+    |--/components
+    |--/components/header.js
+
+    6.6 note copied from Udemy.com
+    Important: These filenames are only reserved when creating them inside of the app/ folder (or any subfolder). Outside of the app/ folder, these filenames are not treated in any special way.
+
+    Here's a list of reserved filenames in NextJS - you'll, of course, learn about the important ones throughout this section:
+
+    page.js => Create a new page (e.g., app/about/page.js creates a <your-domain>/about page)
+
+    layout.js => Create a new layout that wraps sibling and nested pages
+
+    not-found.js => Fallback page for "Not Found" errors (thrown by sibling or nested pages or layouts)
+
+    error.js => Fallback page for other errors (thrown by sibling pages or nested pages or layouts)
+
+    loading.js => Fallback page which is shown whilst sibling or nested pages (or layouts) are fetching data
+
+    route.js => Allows you to create an API route (i.e., a page which does NOT return JSX code but instead data, e.g., in the JSON format)
+
+    You also find a list with all supported filenames & detailed explanations in the official docs: https://nextjs.org/docs/app/api-reference/file-conventions
+
