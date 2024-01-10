@@ -109,3 +109,11 @@
     in the official docs: 
     https://nextjs.org/docs/app/api-reference/file-conventions
 
+7. dynamic routes
+
+    7.1 A dynamic route is a route you define once, then it
+    can be used to render difference pages. 
+
+    7.2 we can create a dynamic route by adding a nested
+    folder that is named with square brackets "[]". We can 
+    put any identifier inside the brackets. We then should put page.js inside the folder, then we can access the params that stored with the identifier.
