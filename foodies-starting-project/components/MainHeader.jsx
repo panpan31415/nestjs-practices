@@ -1,11 +1,13 @@
 import Link from "next/link";
 import logoImg from "@/assets/logo.png";
 import classes from "./MainHeader.module.css";
+import Image from "next/image";
 export default function MainHeader() {
   return (
     <header className={classes.header}>
       <Link href="/" className={classes.logo}>
-        <img src={logoImg.src} alt="A plate of food" />
+        {/* priority: tells NextJs to load the image ASAP, do not use lay loading method on this image  */}
+        <Image src={logoImg} alt="A plate of food" priority />
         Next Level Food
       </Link>
       <nav className={classes.nav}>
