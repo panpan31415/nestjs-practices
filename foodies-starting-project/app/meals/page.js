@@ -1,11 +1,8 @@
 import { Fragment } from "react";
 import classes from "./page.module.css";
 import Link from "next/link";
-import MealsGrid from "@/components/meals/meals-grid";
-import { getMeals } from "@/lib/meal";
-
-export default async function MealPage() {
-  const meals = await getMeals();
+import Meals from "@/components/meals";
+export default function MealPage() {
   return (
     <Fragment>
       <header className={classes.header}>
@@ -22,7 +19,7 @@ export default async function MealPage() {
         </p>
       </header>
       <main className={classes.main}>
-        <MealsGrid meals={meals} />
+        <Meals />
       </main>
     </Fragment>
   );
