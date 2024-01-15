@@ -4,7 +4,9 @@ import classes from "./index.module.css";
 import { Suspense } from "react";
 
 async function Meals() {
-  const meals = await getMeals();
+  let meals;
+
+  meals = await getMeals();
   return <MealsGrid meals={meals} />;
 }
 
