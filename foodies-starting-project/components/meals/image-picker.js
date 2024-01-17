@@ -66,6 +66,7 @@ export default function ImagePicker({ label, name }) {
           multiple={true}
           ref={imageInputRef}
           onChange={onImageChange}
+          required
         />
         {/* if type is submit, it will cause the form to send an post request */}
         <button
