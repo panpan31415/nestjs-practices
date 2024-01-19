@@ -1,5 +1,6 @@
 "use server";
 
+import { redirect } from "next/navigation";
 import { saveMeal } from "./meal";
 
 // "user server" means all the functions in this file
@@ -30,4 +31,5 @@ export async function shareMeal(formData) {
     creator_email: formData.get("email"),
   };
   await saveMeal(meal);
+  await redirect("/meals");
 }
