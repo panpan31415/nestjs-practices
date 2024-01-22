@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { saveMeal } from "./meal";
+import { revalidatePath } from "next/cache";
 
 // "user server" means all the functions in this file
 // will be treated as Server Actions
@@ -21,7 +22,14 @@ import { saveMeal } from "./meal";
 // you should not do that. you should always import a
 // server action to another component.
 
-export async function shareMeal(formData) {
+function isInValidText(text) {
+  if (!text || text.trim() === "") {
+    return true;
+  }
+  return false;
+}
+
+export async function shareMeal(prevState, formData) {
   const meal = {
     title: formData.get("title"),
     summary: formData.get("summary"),
@@ -30,6 +38,21 @@ export async function shareMeal(formData) {
     creator: formData.get("name"),
     creator_email: formData.get("email"),
   };
+
+  if (
+    isInValidText(meal.title) ||
+    isInValidText(meal.summary) ||
+    isInValidText(meal.instructions) ||
+    isInValidText(mail.creator) ||
+    isInValidText(mail.creator_email) ||
+    isInValidText(mail.creator_email.includes("@") || !meal.image) ||
+    meal.image.size === 0
+  ) {
+    return { message: "invalid input" };
+  }
+
   await saveMeal(meal);
+  revalidatePath("/meals", "layout"); // when you update your db, you should revalidate the meals path, which means clear catch on this path. the default value of second
+  // parameter is "page", that means the page under the path "/meals" will be revalidated, if you change to "layout" that means the sub pages will also be revalidated.
   await redirect("/meals");
 }
