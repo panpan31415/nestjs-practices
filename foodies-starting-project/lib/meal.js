@@ -27,8 +27,8 @@ export async function saveMeal(meal) {
   const bufferedImage = await meal.image.arrayBuffer();
 
   s3.putObject({
-    Bucket: process.env.AWS_BUCKET_FOLDER,
-    Key: fileName,
+    Bucket: "panpan-nextjs-exercise",
+    Key: "foodies/" + fileName,
     Body: Buffer.from(bufferedImage),
     ContentType: meal.image.type,
   });
