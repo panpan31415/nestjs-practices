@@ -3,9 +3,10 @@ import ImagePicker from "./image-picker";
 import { shareMeal } from "@/lib/actions";
 import classes from "./meals-submit-form.module.css";
 import SubmitButton from "./SubmitButton";
-import useFormState from "react-dom";
+import { useFormState } from "react-dom";
+
 export default function MealsSubmitForm() {
-  const [state, formAction] = useFormState(shareMeal, { message: null });
+  const [state, formAction] = useFormState(shareMeal, { message: "" });
 
   return (
     <form className={classes.form} action={formAction}>
