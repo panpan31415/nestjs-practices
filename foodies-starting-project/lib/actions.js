@@ -43,9 +43,10 @@ export async function shareMeal(prevState, formData) {
     isInValidText(meal.title) ||
     isInValidText(meal.summary) ||
     isInValidText(meal.instructions) ||
-    isInValidText(mail.creator) ||
-    isInValidText(mail.creator_email) ||
-    isInValidText(mail.creator_email.includes("@") || !meal.image) ||
+    isInValidText(meal.creator) ||
+    isInValidText(meal.creator_email) ||
+    !meal.creator_email.includes("@") ||
+    !meal.image ||
     meal.image.size === 0
   ) {
     return { message: "invalid input" };
