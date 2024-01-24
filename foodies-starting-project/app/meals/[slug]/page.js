@@ -26,7 +26,7 @@ export default function MealDetailsPage({ params }) {
           <p className={classes.creator}>
             by
             <a href={`mailto:${meal.creator_email}`} type="email">
-              {meal.creator}
+              {" " + meal.creator}
             </a>
           </p>
           <p className={classes.summary}>{meal.summary}</p>
