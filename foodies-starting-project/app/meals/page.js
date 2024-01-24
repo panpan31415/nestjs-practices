@@ -2,6 +2,12 @@ import { Fragment } from "react";
 import classes from "./page.module.css";
 import Link from "next/link";
 import Meals from "@/components/meals";
+
+export const metadata = {
+  title: "All Meals",
+  description: "Browse the delicious meals shared by our vibrant community",
+};
+
 export default function MealPage() {
   return (
     <Fragment>
